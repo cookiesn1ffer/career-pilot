@@ -6,6 +6,7 @@ import cacheHeaders from '../middleware/cacheHeaders.js';
 import { validateToken as validateCloudflareToken } from '../services/deploy/cloudflareDeployer.js';
 import { validateToken as validateGithubToken } from '../services/deploy/githubPagesDeployer.js';
 import { validateToken as validateNetlifyToken } from '../services/deploy/netlifyDeployer.js';
+import { validatePortfolioSlug, validatePortfolioContent } from '../middleware/portfolioValidator.js';
 import { enhanceSection } from '../services/ai/portfolioContentEnhancer.js';
 import { generateRobotsTxt, generateSitemapXml } from '../utils/sitemapGenerator.js';
 import { analyzeAccessibility } from '../services/accessibilityChecker.js';
@@ -313,6 +314,35 @@ router.get('/', asyncHandler(async (req, res) => {
     url: `/portfolio/public/${slug}`,
   }));
   res.status(200).json({ success: true, portfolios, data: portfolios });
+}));
+
+/**
+ * POST /api/portfolio
+ * Create a new portfolio with validated and sanitized content.
+ */
+router.post('/', verifyToken, validatePortfolioSlug, validatePortfolioContent, asyncHandler(async (req, res) => {
+  const { slug, sections } = req.body;
+
+  res.status(201).json({
+    success: true,
+    message: 'Portfolio created successfully.',
+    data: { slug, sections },
+  });
+}));
+
+/**
+ * PUT /api/portfolio/:slug
+ * Update an existing portfolio with validated and sanitized content.
+ */
+router.put('/:slug', verifyToken, validatePortfolioSlug, validatePortfolioContent, asyncHandler(async (req, res) => {
+  const { slug } = req.params;
+  const { sections } = req.body;
+
+  res.status(200).json({
+    success: true,
+    message: 'Portfolio updated successfully.',
+    data: { slug, sections },
+  });
 }));
 
 export default router;
