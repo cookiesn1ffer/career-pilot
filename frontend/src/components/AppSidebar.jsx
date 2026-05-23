@@ -177,7 +177,7 @@ function UserSection() {
             <button
                 onClick={toggleTheme}
                 className={cn(
-                    "flex items-center gap-3 w-full py-3 px-4 rounded-2xl text-muted-foreground hover:text-foreground hover:bg-muted transition-all cursor-pointer font-bold",
+                    "nav-link nav-link-hover w-full cursor-pointer",
                     !open && animate && "justify-center"
                 )}
             >
@@ -188,7 +188,7 @@ function UserSection() {
                         opacity: animate ? (open ? 1 : 0) : 1,
                     }}
                     transition={{ duration: 0.2 }}
-                    className="text-sm font-bold whitespace-pre"
+                    className="text-sm font-semibold whitespace-pre"
                 >
                     {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
                 </motion.span>
@@ -218,7 +218,7 @@ function UserSection() {
                     setOpen(false);
                 }}
                 className={cn(
-                    "flex items-center gap-3 w-full py-3 px-4 rounded-2xl text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all cursor-pointer font-bold",
+                    "nav-link w-full transition-all cursor-pointer hover:text-destructive hover:bg-destructive/10",
                     !open && animate && "justify-center"
                 )}
             >
@@ -229,7 +229,7 @@ function UserSection() {
                         opacity: animate ? (open ? 1 : 0) : 1,
                     }}
                     transition={{ duration: 0.2 }}
-                    className="text-sm font-bold whitespace-pre"
+                    className="text-sm font-semibold whitespace-pre"
                 >
                     Logout
                 </motion.span>
