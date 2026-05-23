@@ -296,7 +296,7 @@ New contributors and reviewers should read **[ARCHITECTURE.md](./ARCHITECTURE.md
 
 ```env
 # Server
-PORT=5000
+PORT=5001
 NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 
@@ -337,7 +337,7 @@ RAZORPAY_KEY_SECRET=your-razorpay-secret
 # LinkedIn OAuth
 LINKEDIN_CLIENT_ID=your-linkedin-client-id
 LINKEDIN_CLIENT_SECRET=your-linkedin-client-secret
-LINKEDIN_REDIRECT_URI=http://localhost:5000/api/auth/linkedin/callback
+LINKEDIN_REDIRECT_URI=http://localhost:5001/api/auth/linkedin/callback
 
 # Two-Factor Authentication
 TOTP_ENCRYPTION_KEY=your-32-char-encryption-key
@@ -354,7 +354,7 @@ OPENAI_API_KEY=your-openai-api-key
 #### Frontend (.env)
 
 ```env
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=http://localhost:5001
 VITE_FIREBASE_API_KEY=your-api-key
 VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
 VITE_FIREBASE_PROJECT_ID=your-project-id
@@ -415,8 +415,8 @@ npm run dev
 6. **Access the application**
 
 - Frontend: http://localhost:5173
-- Backend API: http://localhost:5000
-- Health Check: http://localhost:5000/health
+- Backend API: http://localhost:5001
+- Health Check: http://localhost:5001/health
 
 ### Quick API checks (cURL)
 
@@ -424,14 +424,14 @@ With the backend running locally:
 
 ```bash
 # Health check (no auth)
-curl -s http://localhost:5000/health | jq
+curl -s http://localhost:5001/health | jq
 
 # Authenticated route example (replace TOKEN with a Firebase ID token)
 curl -s -H "Authorization: Bearer TOKEN" \
-  http://localhost:5000/api/auth/verify | jq
+  http://localhost:5001/api/auth/verify | jq
 ```
 
-In [Postman](https://www.postman.com/), create a GET request to `http://localhost:5000/health`, or set **Authorization → Bearer Token** for protected `/api/*` routes. See [API_DOCS/README.md](./API_DOCS/README.md) for the full route list.
+In [Postman](https://www.postman.com/), create a GET request to `http://localhost:5001/health`, or set **Authorization → Bearer Token** for protected `/api/*` routes. See [API_DOCS/README.md](./API_DOCS/README.md) for the full route list.
 
 ---
 
