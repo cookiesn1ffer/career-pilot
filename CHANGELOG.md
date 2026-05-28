@@ -1,3 +1,10 @@
+# [1.57.0](https://github.com/anurag3407/career-pilot/compare/v1.56.1...v1.57.0) (2026-05-28)
+
+
+### Features
+
+* implement routing for navigation links in JetLandingPage ([1749382](https://github.com/anurag3407/career-pilot/commit/1749382e48ecf8c6ce631b19bf92412db8a1fe18))
+
 ## [1.56.1](https://github.com/anurag3407/career-pilot/compare/v1.56.0...v1.56.1) (2026-05-28)
 
 
