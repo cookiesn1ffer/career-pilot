@@ -56,6 +56,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 import OpenRouterCallback from './pages/OpenRouterCallback';
+import LegalPageErrorBoundary from './components/LegalPageErrorBoundary';
 
 // Hub Imports
 import ResumeHub from './pages/hubs/ResumeHub';
@@ -171,10 +172,10 @@ function AppRoutes() {
         <Route path="/auth/openrouter/callback" element={<OpenRouterCallback />} />
 
         {/* Legal Pages (Public) */}
-        <Route path="/privacy" element={<Suspense fallback={null}><PrivacyPolicy /></Suspense>} />
+        <Route path="/privacy" element={<LegalPageErrorBoundary><Suspense fallback={null}><PrivacyPolicy /></Suspense></LegalPageErrorBoundary>} />
         <Route path="/about" element={<About />} />
-        <Route path="/terms" element={<Suspense fallback={null}><TermsOfService /></Suspense>} />
-        <Route path="/cookies" element={<Suspense fallback={null}><CookiePolicy /></Suspense>} />
+        <Route path="/terms" element={<LegalPageErrorBoundary><Suspense fallback={null}><TermsOfService /></Suspense></LegalPageErrorBoundary>} />
+        <Route path="/cookies" element={<LegalPageErrorBoundary><Suspense fallback={null}><CookiePolicy /></Suspense></LegalPageErrorBoundary>} />
 
         {/* Template Gallery Route (Registered at /templates) */}
         <Route path="/templates" element={<TemplateGallery />} />
